@@ -129,7 +129,42 @@ public class NameRepository {
      */
     public static String[] findByFirstName(String firstName) {
         //todo: PART 3: findByFirstName method
-        return null;
+
+        // Counting how many names that match the given firstName.
+        int count = 0;
+
+        for (String name : NameRepository.names) {
+            // Split the name into first and last names.
+            String[] nameParts = name.split(" ");
+            // Check if the first name matches the provided firstName.
+            if (nameParts[0].equalsIgnoreCase(firstName)) {
+                count++;
+            }
+        }
+        
+        // Create a new array with the same length as the count.
+        String[] firstNames = new String[count];
+        
+        // Index to keep track of the current index of the firstNames array.
+        int index = 0;
+        
+        // Fill the firstNames array with all names that match the given firstName.
+        for (String name : NameRepository.names) {
+            // Split the name into first and last names.
+            String[] nameParts = name.split(" ");
+            // Check if the first name matches the provided firstName.
+            if (nameParts[0].equalsIgnoreCase(firstName)) {
+                firstNames[index] = name;
+                index++;
+            }
+        }
+
+        if (firstNames.length > 0) {
+            return firstNames;
+        }
+        else {
+            return null;
+        }
     }
 
 
@@ -141,7 +176,38 @@ public class NameRepository {
      */
     public static String[] findByLastName(String lastName) {
         //todo: PART 3: implement findByLastName method
-        return null;
+
+        // Same logic as findByFirstName method, but with the last name.
+        // Count how many names that match the given lastName.
+        int count = 0;
+        for (String name : NameRepository.names) {
+            String[] nameParts = name.split(" ");
+            if (nameParts[1].equalsIgnoreCase(lastName)) {
+                count++;
+            }
+        }
+
+        // Create a new array with the same length as the count.
+        String[] lastNames = new String[count];
+
+        // Index to keep track of the current index of the lastNames array.
+        int index = 0;
+
+        // Fill the lastNames array with all names that match the given lastName.
+        for (String name : NameRepository.names) {
+            String[] nameParts = name.split(" ");
+            if (nameParts[1].equalsIgnoreCase(lastName)) {
+                lastNames[index] = name;
+                index++;
+            }
+        }
+
+        if (lastNames.length > 0) {
+            return lastNames;
+        }
+        else {
+            return null;
+        }
     }
 
 
@@ -154,6 +220,20 @@ public class NameRepository {
      */
     public static boolean update(String original, String updatedName) {
         //todo: PART 3: implement update method
+
+        // Check if the updated name already exists in the names array.
+        if(find(updatedName) == null) {
+            // Loop through all elements in the names array.
+            for(int i = 0; i < NameRepository.names.length; i++) {
+                // Check if the current name is equal to the original name case-insensitively.
+                if(NameRepository.names[i].equalsIgnoreCase(original)) {
+                    // Update the name to the updated name.
+                    NameRepository.names[i] = updatedName;
+                    return true;
+                }
+            }
+        }
+
         return false;
     }
 
