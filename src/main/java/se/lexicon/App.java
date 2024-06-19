@@ -13,9 +13,19 @@ public class App {
         // call more methods as needed
 
 //        NameRepository.clear();
-        System.out.println(NameRepository.getSize());   // 0;
+        System.out.println(NameRepository.getSize());   // 0.
 
-        String[] names = NameRepository.findAll();
+        String[] names = NameRepository.findAll();  // [Erik Svensson, Mehrdad Javan].
         System.out.println(Arrays.toString(names));
+
+        String fullName = NameRepository.find("Erik Svensson");
+        System.out.println(fullName);   // Erik Svensson.
+
+        NameRepository.add("Sami Alabed");
+        String[] namesAdd = NameRepository.findAll();
+        System.out.println(Arrays.toString(namesAdd));  // [Erik Svensson, Mehrdad Javan, Sami Alabed].
+
+
+
     }
 }

@@ -77,6 +77,14 @@ public class NameRepository {
      */
     public static String find(String fullName) {
         //todo: PART 2: implement find method
+
+        // Loop through all elements in the names array.
+        for(String name : NameRepository.names) {
+            // Check if the current name is equal to the provided fullName case-insensitively.
+            if(name.equalsIgnoreCase(fullName)) {
+                return name;
+            }
+        }
         return null;
     }
 
@@ -89,6 +97,26 @@ public class NameRepository {
      */
     public static boolean add(String fullName) {
         //todo: PART 2: implement add method
+
+        // Check if the fullName already exists in the names array.
+        if(find(fullName) == null) {
+            // Create a new array with a length of the current names array + 1.
+            String[] newNames = new String[NameRepository.names.length + 1];
+
+            // Copy all elements from the names array to the new array.
+            for(int i = 0; i < NameRepository.names.length; i++) {
+                newNames[i] = NameRepository.names[i];
+            }
+
+            // Add the new fullName to the last index of the new array.
+            newNames[newNames.length - 1] = fullName;
+
+            // Assign the names array to the new array.
+            NameRepository.names = newNames;
+
+            return true;
+        }
+
         return false;
     }
 
