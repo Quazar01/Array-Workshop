@@ -37,13 +37,18 @@ public class App {
         System.out.println(Arrays.toString(lastNames));  // [Erik Svensson].
 
         // Update a name.
-        boolean updated = NameRepository.update("Erik Svensson", "Erik Svensson Updated.");
+        boolean updated = NameRepository.update("Erik Svensson", "Erik Svensson Updated");
         System.out.println(updated);  // true.
         boolean updated2 = NameRepository.update("Eriks", "not found.");
         System.out.println(updated2);  // false.
 
+        // Remove a name.
+        boolean removed = NameRepository.remove("Erik Svensson Updated");
+        System.out.println(removed);  // true.
 
-
+        // Confirm the name is removed.
+        String[] names2 = NameRepository.findAll();  // [Mehrdad Javan, Sami Alabed].
+        System.out.println(Arrays.toString(names2));
 
     }
 }

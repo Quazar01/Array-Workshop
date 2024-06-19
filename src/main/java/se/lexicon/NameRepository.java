@@ -246,6 +246,30 @@ public class NameRepository {
      */
     public static boolean remove(String fullName) {
         //todo: PART 4: implement remove method
+
+        // Loop through all elements in the names array.
+        for(int i = 0; i < NameRepository.names.length; i++) {
+            // Check if the current name is equal to the provided fullName case-insensitively.
+            if(NameRepository.names[i].equalsIgnoreCase(fullName)) {
+                // Create a new array with a length of the current names array - 1.
+                String[] newNames = new String[NameRepository.names.length - 1];
+
+                // Index to keep track of the current index of the newNames array.
+                int index = 0;
+
+                // Copy all elements from the names array to the new array, except the removed name.
+                for(int j = 0; j < NameRepository.names.length; j++) {
+                    if(j != i) {
+                        newNames[index] = NameRepository.names[j];
+                        index++;
+                    }
+                }
+                // Assign the names array to the new array.
+                NameRepository.names = newNames;
+
+                return true;
+            }
+        }
         return false;
     }
 
