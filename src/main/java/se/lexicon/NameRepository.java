@@ -16,7 +16,7 @@ public class NameRepository {
      */
     public static int getSize() {
         //todo: PART 1: implement getSize method
-        return 0;
+        return names.length;
     }
 
 
@@ -27,6 +27,14 @@ public class NameRepository {
      */
     public static void setNames(String[] names) {
         //todo: PART 1: implement setNames method
+
+        // Assign the names array to a new array with the same length as the provided array.
+        NameRepository.names = new String[names.length];
+
+        // Copy all elements from the provided array to the names array.
+        for(int i = 0; i < names.length; i++) {
+            NameRepository.names[i] = names[i];
+        }
     }
 
 
@@ -35,6 +43,9 @@ public class NameRepository {
      */
     public static void clear() {
         //todo: PART 1: implement clear method
+
+        // Assign the names array to a new empty array.
+        NameRepository.names = new String[0];
     }
 
 
@@ -45,7 +56,16 @@ public class NameRepository {
      */
     public static String[] findAll() {
         //todo: PART 1: implement findAll method
-        return null;
+
+        // Create a new array with the same length as the names array.
+        String[] allNames = new String[NameRepository.names.length];
+
+        // Copy all elements from the names array to the new array.
+        for(int i = 0; i < NameRepository.names.length; i++) {
+            allNames[i] = NameRepository.names[i];
+        }
+
+        return allNames;
     }
 
 
