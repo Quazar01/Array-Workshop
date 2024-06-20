@@ -130,6 +130,8 @@ public class NameRepository {
     public static String[] findByFirstName(String firstName) {
         //todo: PART 3: findByFirstName method
 
+        // Declare an empty string array to return it in case no names match the given firstName.
+        String[] emptyArray = new String[0];
         // Counting how many names that match the given firstName.
         int count = 0;
 
@@ -163,7 +165,7 @@ public class NameRepository {
             return firstNames;
         }
         else {
-            return null;
+            return emptyArray;
         }
     }
 
@@ -178,6 +180,8 @@ public class NameRepository {
         //todo: PART 3: implement findByLastName method
 
         // Same logic as findByFirstName method, but with the last name.
+        // Declare an empty string array to return it in case no names match the given firstName.
+        String[] emptyArray = new String[0];
         // Count how many names that match the given lastName.
         int count = 0;
         for (String name : NameRepository.names) {
@@ -206,7 +210,7 @@ public class NameRepository {
             return lastNames;
         }
         else {
-            return null;
+            return emptyArray;
         }
     }
 
